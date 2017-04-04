@@ -2,6 +2,9 @@ package com.example.sathi.tictactoe;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
+
+import static android.content.ContentValues.TAG;
 
 enum State {
     X_TURN,
@@ -22,6 +25,8 @@ class TicTacToe {
     private static final int EMPTY = 0;
     private static final int X = 1;
     private static final int O = 2;
+    private static int xCount;
+    private static int oCount;
 
     TicTacToe(Context context) {
         this.context = context;
@@ -127,10 +132,15 @@ class TicTacToe {
                 state = r.getString(R.string.o_turn);
                 break;
             case X_WIN:
-                state = r.getString(R.string.x_win);
+                xCount++;
+                state = r.getString(R.string.x_win) + " Points earned: " + xCount;
+                Log.d(TAG, "getState: x has won " + xCount + " times");
                 break;
             case O_WIN:
-                state = r.getString(R.string.o_win);
+                oCount++;
+                state = r.getString(R.string.o_win)+ " Points earned: " + oCount;
+                Log.d(TAG, "getState: o has won " + oCount + " times");
+
                 break;
             default:
                 state = r.getString(R.string.tie);
@@ -138,4 +148,5 @@ class TicTacToe {
         }
         return state;
     }
+
 }
