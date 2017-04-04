@@ -25,8 +25,9 @@ class TicTacToe {
     private static final int EMPTY = 0;
     private static final int X = 1;
     private static final int O = 2;
-    private static int xCount;
-    private static int oCount;
+    private static int xCount = 0;
+    private static int oCount = 0;
+
 
     TicTacToe(Context context) {
         this.context = context;
@@ -56,7 +57,9 @@ class TicTacToe {
             return;
         if (checkMarks(X)) {
             this.state = State.X_WIN;
+            xCount++;
         } else if (checkMarks(O)) {
+            oCount++;
             this.state = State.O_WIN;
         } else if (isFull()) {
             this.state = State.TIE;
@@ -132,15 +135,10 @@ class TicTacToe {
                 state = r.getString(R.string.o_turn);
                 break;
             case X_WIN:
-                xCount++;
-                state = r.getString(R.string.x_win) + " Points earned: " + xCount;
-                Log.d(TAG, "getState: x has won " + xCount + " times");
+                state = r.getString(R.string.x_win) + " Points earned: " + getXCount();
                 break;
             case O_WIN:
-                oCount++;
-                state = r.getString(R.string.o_win)+ " Points earned: " + oCount;
-                Log.d(TAG, "getState: o has won " + oCount + " times");
-
+                state = r.getString(R.string.o_win) + " Points earned: " + getOCount();
                 break;
             default:
                 state = r.getString(R.string.tie);
@@ -148,5 +146,16 @@ class TicTacToe {
         }
         return state;
     }
+
+    int getXCount() {
+        String X = "X has won " + oCount + " times";
+        return xCount;
+    }
+
+    int getOCount() {
+        String O = "O has won " + oCount + " times";
+        return oCount;
+    }
+
 
 }

@@ -3,12 +3,14 @@ package com.example.sathi.tictactoe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class BoardActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "BoardActivity";
     public TextView p1;
     public TextView p2;
     private Button[][] buttons;
@@ -45,8 +47,11 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
                 buttons[row][col].setOnClickListener(this);
             }
         }
-        Button restart = (Button)findViewById(R.id.restart);
+        Button restart = (Button) findViewById(R.id.restart);
+        Button score = (Button) findViewById(R.id.score);
+
         restart.setOnClickListener(this);
+        score.setOnClickListener(this);
         this.game = new TicTacToe(this);
 
     }
@@ -55,6 +60,13 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         if (view.getId() == R.id.restart) {
             game.resetGame();
         }
+        if (view.getId() == R.id.score) {
+            Intent intent = new Intent(BoardActivity.this, ScoreActivity.class);
+            intent.putExtra("score", score());
+            startActivity(intent);
+
+        }
+
         for (int row = 0; row < TicTacToe.NUM_ROWS; row++) {
             for (int col = 0; col < TicTacToe.NUM_COLUMNS; col++) {
                 if (view.getId() == buttons[row][col].getId()) {
@@ -66,6 +78,17 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
 
         }
         feedback.setText(game.getState());
+
+
+    }
+
+    public String score() {
+
+        String xScore = "X has won " + game.getXCount() + " times\n";
+        String oScore = "O has won " + game.getOCount() + " times\n";
+
+        return xScore + oScore;
+
 
     }
 
