@@ -12,4 +12,5 @@
     <string name="x">x</string>
     <string name="o">o</string>
     <string name="score">Score</string>
+    <string name="scores">Scores</string>
 </resources>
