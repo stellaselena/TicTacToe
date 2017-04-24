@@ -84,8 +84,8 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
 
     public String score() {
 
-        String xScore = "X has won " + game.getXCount() + " times\n";
-        String oScore = "O has won " + game.getOCount() + " times\n";
+        String xScore = "X has " + game.getXCount() + " points!\n";
+        String oScore = "O has " + game.getOCount() + " points\n";
         if (game.getXCount() > game.getOCount()) {
             return "1. " + xScore + "2. " + oScore;
         } else if (game.getXCount() < game.getOCount()) {
