@@ -62,7 +62,8 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         }
         if (view.getId() == R.id.score) {
             Intent intent = new Intent(BoardActivity.this, ScoreActivity.class);
-            intent.putExtra("score", score());
+            intent.putExtra("xScore", xScore());
+            intent.putExtra("oScore", oScore());
             startActivity(intent);
 
         }
@@ -82,21 +83,19 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    public String score() {
+    public String xScore() {
 
-        String xScore = "X has " + game.getXCount() + " points!\n";
-        String oScore = "O has " + game.getOCount() + " points\n";
-        if (game.getXCount() > game.getOCount()) {
-            return "1. " + xScore + "2. " + oScore;
-        } else if (game.getXCount() < game.getOCount()) {
-            return "1. " + oScore + "2. " + xScore;
+        String xScore = "X: "+ p1.getText().toString() +" has " + game.getXCount() + " points\n";
 
-        } else {
-            return "1. " + xScore + "2. " + oScore;
-
-        }
+       return xScore;
 
 
+    }
+
+    public String oScore() {
+        String oScore = "O: "+ p2.getText().toString() +" has " + game.getOCount() + " points\n";
+
+        return oScore;
     }
 
 }
