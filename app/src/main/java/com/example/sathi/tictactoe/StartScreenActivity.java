@@ -12,6 +12,7 @@ public class StartScreenActivity extends AppCompatActivity {
     private String player1 = "";
     private String player2 = "";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

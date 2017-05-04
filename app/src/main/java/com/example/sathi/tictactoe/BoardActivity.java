@@ -85,15 +85,15 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
 
     public String xScore() {
 
-        String xScore = "X: "+ p1.getText().toString() +" has " + game.getXCount() + " points\n";
+        String xScore = "X: " + p1.getText().toString() + " has " + game.getXCount() + " points\n";
 
-       return xScore;
+        return xScore;
 
 
     }
 
     public String oScore() {
-        String oScore = "O: "+ p2.getText().toString() +" has " + game.getOCount() + " points\n";
+        String oScore = "O: " + p2.getText().toString() + " has " + game.getOCount() + " points\n";
 
         return oScore;
     }
